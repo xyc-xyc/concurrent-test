@@ -1,0 +1,688 @@
+
+<html>
+<head>
+<title>Java Concurrency Stress test report</title>
+ <style type="text/css">
+   * { font-family: Arial; }
+   table { font-size: 9pt; }
+   a { color: #000000; }
+   .progress { padding: 0px; }
+   .header { text-align: left; }
+   .section1 { font-size: 12pt; background-color: #BDB76B; color: #000000; font-weight: bold;}
+   .section2 { font-size: 12pt; background-color: #F0E68C; color: #000000; font-weight: bold;}
+   .cell1 { background-color: #FAFAD2; }
+   .cell2 { background-color: #EEE8AA; }
+   .passedProgress { background-color: #00AA00; color: #FFFFFF; text-align: center; font-weight: bold; }
+   .failedProgress { background-color: #FF0000; color: #FFFFFF; text-align: center; font-weight: bold; }
+   .passed { color: #00AA00; text-align: center; font-weight: bold; }
+   .failed { color: #FF0000; text-align: center; font-weight: bold; }
+   .interesting { color: #0000FF; text-align: center; font-weight: bold; }
+   .spec { color: #AAAA00; text-align: center; font-weight: bold; }
+   .endResult { font-size: 48pt; text-align: center; font-weight: bold; }
+ </style>
+</head>
+<body>
+<h1>com.sample.tests.DoubleCheckedLockingTest</h1>
+<h3>Description and references</h3>
+<p>null</p>
+<h3>Environment</h3>
+<table>
+<tr>
+<td nowrap>java.specification.name</td>
+<td nowrap>Java Platform API Specification</td>
+</tr>
+<tr>
+<td nowrap>java.specification.vendor</td>
+<td nowrap>Oracle Corporation</td>
+</tr>
+<tr>
+<td nowrap>java.specification.version</td>
+<td nowrap>19</td>
+</tr>
+<tr>
+<td nowrap>java.vendor</td>
+<td nowrap>Oracle Corporation</td>
+</tr>
+<tr>
+<td nowrap>java.version</td>
+<td nowrap>19.0.2</td>
+</tr>
+<tr>
+<td nowrap>java.vm.name</td>
+<td nowrap>Java HotSpot(TM) 64-Bit Server VM</td>
+</tr>
+<tr>
+<td nowrap>java.vm.vendor</td>
+<td nowrap>Oracle Corporation</td>
+</tr>
+<tr>
+<td nowrap>java.vm.version</td>
+<td nowrap>19.0.2+7-44</td>
+</tr>
+<tr>
+<td nowrap>os.arch</td>
+<td nowrap>x86_64</td>
+</tr>
+<tr>
+<td nowrap>os.name</td>
+<td nowrap>Mac OS X</td>
+</tr>
+<tr>
+<td nowrap>os.version</td>
+<td nowrap>11.7.4</td>
+</tr>
+</table>
+<h3>Results</h3>
+<table cellpadding=5 border=1>
+<tr>
+<th>Compilation Mode</th>
+<th>Scheduling Class</th>
+<th>Java Options</th>
+<th>Status</th>
+<th colspan=4>Observed States</th>
+</tr>
+<tr>
+<th colspan=4></th>
+<th nowrap align='center'>0, 0</th>
+<th nowrap align='center'>0, 2</th>
+<th nowrap align='center'>1, 0</th>
+<th nowrap align='center'>1, 2</th>
+</tr>
+<tr>
+<td colspan=4></td>
+<td>Interesting</td>
+<td>Interesting</td>
+<td>Interesting</td>
+<td>Acceptable</td>
+</tr>
+<tr>
+<td colspan=4></td>
+<td>Interesting outcome.</td>
+<td>Interesting outcome.</td>
+<td>Interesting outcome.</td>
+<td>Default outcome.</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>27291648</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>42190848</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>26820608</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1688761365]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>27250688</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1954698252]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>27793408</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=29378557]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>28356608</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=365246569]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>8</td>
+<td align='right' width='25.0%' bgColor=#00ffff>1</td>
+<td align='right' width='25.0%' bgColor=#00ff00>25704439</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=964709848]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>4</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>27353084</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>29360128</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>38453248</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>49655808</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1211475998]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>40695808</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1375406032]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>524</td>
+<td align='right' width='25.0%' bgColor=#00ff00>40306164</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1588038160]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>45846528</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1888383924]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>41740288</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=272341784]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>300</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>43296468</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>28479488</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1020030714]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>1</td>
+<td align='right' width='25.0%' bgColor=#00ff00>27322367</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1486869084]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>4</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>28561404</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1647564679]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>27762688</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=2106704204]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>26943488</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=2117983317]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>28018688</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>48560128</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1553003286]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>283</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>41729765</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1795394529]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>39518208</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=550821712]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>264</td>
+<td align='right' width='25.0%' bgColor=#00ff00>42067704</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=655814120]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>41351168</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=930269591]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>936</td>
+<td align='right' width='25.0%' bgColor=#00ff00>37561432</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>43081728</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1639333454]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>775</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>38472953</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=2139939831]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>4014</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>37937234</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=239135954]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ffff>1532</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>32799236</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=318141598]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#c0c0c0>0</td>
+<td align='right' width='25.0%' bgColor=#00ff00>33886208</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group free, core group free
+    actor2: package group free, core group free
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=60748:/Applications/IntelliJ IDEA CE.app/Contents/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=72637846]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='25.0%' bgColor=#00ffff>1233</td>
+<td align='right' width='25.0%' bgColor=#00ffff>20</td>
+<td align='right' width='25.0%' bgColor=#00ffff>2322</td>
+<td align='right' width='25.0%' bgColor=#00ff00>53533193</td>
+</tr>
+</table>
+<h3>Messages</h3>
+<h3>VM Output Streams</h3>
+<h3>VM Error Streams</h3>
+</body>
+</html>
