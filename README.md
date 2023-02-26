@@ -1,5 +1,5 @@
 # concurrent-test
-concurrent tests with jcstress
+concurrent tests powered by jcstress
 
 (1)
 open the project in intellij
