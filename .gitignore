@@ -26,3 +26,5 @@ hs_err_pid*
 jcstress-results*
 /.idea/
 /.settings/
+/.gradle/
+/build/

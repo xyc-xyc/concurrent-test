@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group 'org.simple'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.openjdk.jcstress:jcstress-core:0.15'
+    annotationProcessor 'org.openjdk.jcstress:jcstress-core:0.15'
+}
