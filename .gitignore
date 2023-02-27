@@ -28,3 +28,4 @@ jcstress-results*
 /.settings/
 /.gradle/
 /build/
+/results/

@@ -1,10 +1,8 @@
-package com.sample.tests;
+package org.sample.tests;
 
 
 import org.openjdk.jcstress.annotations.*;
 import org.openjdk.jcstress.infra.results.II_Result;
-
-// See jcstress-samples or existing tests for API introduction and testing guidelines
 
 @JCStressTest
 @Outcome(id = "1, 2", expect = Expect.ACCEPTABLE, desc = "Default outcome.")

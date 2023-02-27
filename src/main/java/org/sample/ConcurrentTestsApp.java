@@ -1,4 +1,4 @@
-package com.sample;
+package org.sample;
 
 import org.openjdk.jcstress.Main;
 public class ConcurrentTestsApp {
